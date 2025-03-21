@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
-body {
+body {   
+    font-family: "Urbanist", sans-serif;
+}
+
+.bg-custom-bg{
     background: rgb(21, 20, 21);
-    background: linear-gradient(51deg, rgba(21, 20, 21, 1) 0%, rgba(130, 14, 34, 1) 47%, rgba(130, 14, 34, 1) 74%, rgba(19, 19, 19, 1) 100%);
+    background: linear-gradient(51deg, rgba(21, 20, 21, 1) 0%, rgba(130, 14, 34, 1) 100%, rgba(130, 14, 34, 1) 74%, rgba(19, 19, 19, 1) 100%);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: "Urbanist", sans-serif;
 }
 
 .signup-btn {
@@ -114,11 +117,85 @@ legend {
     background: #7B22A7;
 }
 
+.heading h2{
+    font-size: 40px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0;
+}
 
-
-
-
-
+.swiper-prev{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 99;
+    background-color: #000;
+    border-radius: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    cursor: pointer;
+}
+.swiper-next{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 99;
+    background-color: #000;
+    border-radius: 50%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    cursor: pointer;
+}
+.swiper-pagination{
+    display: none;
+}
+.event-card h4{
+    font-size: 25px;
+    margin-bottom: 0;
+    color: #fff;
+    font-weight: 500
+}
+.mode{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+.event-link{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.location{
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #fff;
+}
+.sub-title{
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.date, .time, .type{
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #fff;
+}
+.swiper-slide {
+    height: auto !important;
+}
+.bg-card{
+    background: #99999929;
+    border-radius: 15px;
+}
 /* footer css */
 
 .contact-area {
@@ -139,3 +216,5 @@ legend {
     font-weight: 400;
     margin-bottom: 10px;
 }
+
+/* event slider css */
