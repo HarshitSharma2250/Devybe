@@ -2,15 +2,23 @@ import React, { useState, useCallback } from "react";
 import arrLeft from "../assets/images/icons/arrow-left.png";
 import tickfrom from "../assets/images/icons/tick.png";
 import tickMark from "../assets/images/icons/tick-mark.png";
+import { useDispatch } from "react-redux";
 
 const List = ({ items, images }) => {
   const [current, setCurrent] = useState([]);
+  const[addEvent,setaddEvent]=useState([])
+const dispatch=useDispatch()
 
   const updateCurrent = useCallback((name) => {
     setCurrent((c) =>
       c.includes(name) ? c.filter((i) => i !== name) : [...c, name]
     );
   }, []);
+
+function HandleAddCategory(){
+dispatch()
+}
+
 
   return (
     <div className="container p-4">
@@ -31,12 +39,12 @@ const List = ({ items, images }) => {
               onClick={() => updateCurrent(item.name)}
             >
               <img src={isSelected ? tickMark : ""} />
-              <span>{item.name}</span>
+              <span >{item.name}</span>
             </li>
           );
         })}
       </ul>
-      <button
+      <button onClick={HandleAddCategory}
         className="custom-btn w-100 mt-3"
       >
         Get Started
