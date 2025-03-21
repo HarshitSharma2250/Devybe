@@ -125,8 +125,8 @@ console.log("check all event data------",Events);
               <h4>{event?.Title}</h4>
               <p className="mode">{event.Mode}</p>
               <img
-                src={event?.image}
-                alt={event.title}
+                src={event?.Images[0]}
+                alt={event.Title}
                 className="w-100 my-3"
                 style={{ height: "250px", objectFit: "cover", borderRadius:"15px"}}
               />
@@ -135,7 +135,7 @@ console.log("check all event data------",Events);
                 <p className="location">Location: {event.Location.address}</p>
               ) : (
                 <a
-                  href={event.link}
+                  href={event?.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="event-link"
