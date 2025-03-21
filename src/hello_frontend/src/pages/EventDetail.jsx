@@ -7,8 +7,18 @@ import app from "../assets/images/icons/apps.png";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useDispatch } from "react-redux";
+import { RegisterEventThunk } from "../features/thunks/SystemDashboardthunk";
 
-const EventDetail = () => {
+const EventDetail = ({setShow,eventData}) => {
+const dispatch=useDispatch()
+// console.log('check data coming or not-------',data)
+
+
+function HandleEventRegister(){
+dispatch(RegisterEventThunk(eventData?._id))
+}
+
   return (
     <>
       <Header />
@@ -115,7 +125,7 @@ const EventDetail = () => {
                   <h3>Registration</h3>
                 </div>
                 <p>Welcome! To join the event, please register below.</p>
-                <button className="custom-btn">Register</button>
+                <button className="custom-btn" onClick={HandleEventRegister}>Register</button>
               </div>
             </div>
           </div>
