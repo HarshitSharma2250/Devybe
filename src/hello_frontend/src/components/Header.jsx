@@ -86,9 +86,10 @@ const HandleLoginChange = (e) => {
                   type="button"
                   onClick={() => setShowModal(true)}
                 >
-                 {tokens && tokens.first_name ||"Connect Wallet"} 
+                 {tokens && tokens.first_name ||"Sign up"} 
                 </button>
               </form>
+              
             </div>
           </div>
         </nav>
@@ -117,7 +118,7 @@ const HandleLoginChange = (e) => {
               <form  onSubmit={HandleSubmit}>
                 <legend>Sign in to your account</legend>
                 <div className="form-group">
-                  <label className="form-label">Name</label>
+                  <label className="form-label">User Name</label>
                   <input
                   value={forstData.first_name}
                   name="first_name"
