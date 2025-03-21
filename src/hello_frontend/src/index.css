@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background: rgb(21, 20, 21);
+    background: linear-gradient(51deg, rgba(21, 20, 21, 1) 0%, rgba(130, 14, 34, 1) 47%, rgba(130, 14, 34, 1) 74%, rgba(19, 19, 19, 1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Urbanist", sans-serif;
+}
+
+.signup-btn {
+    background: #fff !important;
+    padding: 5px 20px;
+    color: #7B22A7 !important;
+    border-radius: 20px;
+    font-size: 18px;
+    border: none;
+    font-weight: 600;
+}
+
+.custom-btn {
+    background: #7B22A7 !important;
+    width: 100%;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.wallet-btn {
+    background: #fff !important;
+    color: #7B22A7 !important;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 1px solid #7B22A7 !important;
+    font-weight: 600;
+}
+
+.nav-item .nav-link {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.navbar {
+    /* background: #00000026; */
+    position: absolute;
+    width: 100%;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-content p {
+    text-align: center;
+    border-bottom: 1px solid #c3c3c3;
+    padding: 10px 50px;
+    width: fit-content;
+    margin: auto;
+}
+
+legend {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.hero-section {
+    background-image: url(../src/assets/images/main.jpg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.hero-section h1 {
+    color: white;
+    background: #00000050;
+    font-size: 45px;
+    padding: 100px;
+    font-weight: 700;
+}
+
+.bg-custom {
+    background: #7B22A7;
+}
+
+
+
+
+
+
+/* footer css */
+
+.contact-area {
+    border-bottom: 1px solid #353C46;
+}
+
+.contact-content p {
+    font-size: 15px;
+    color: #fff;
+    margin: 10px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+.contact-content h6 {
+    color: #cccccc;
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
