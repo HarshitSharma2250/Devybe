@@ -1,0 +1,17 @@
+
+{
+  "canisters": {
+    "hello_frontend": {
+      "source": ["src/hello_frontend/dist"],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": "npm run build"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
