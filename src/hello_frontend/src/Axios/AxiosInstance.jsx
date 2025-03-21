@@ -1,9 +1,9 @@
 import axios from "axios";
- import { GetUserCredentials } from "../utils/HelperFunction.utils";
+
 
 
 export const axiosInstance = axios.create({
-  baseURL: "https://devybe-backend.onrender.com", 
+  baseURL: "http://localhost:4100", 
   headers: {
     "Content-Type": "application/json",
   },
@@ -12,7 +12,7 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const tokenToUse = config.url.includes("api/") ? JSON.parse(localStorage.getItem("tokens")).access : null;
+    const tokenToUse =  JSON.parse(localStorage.getItem("tokens")).x_auth_access_token ;
     if (tokenToUse) {
       config.headers.Authorization = `Bearer ${tokenToUse}`;
     }

@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../src/assets/images/logo.png";
 import SelectCategory from "../pages/selectCategory";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthLoginThunk } from "../features/thunks/UserThunk";
+import { GetCategoryThunk } from "../features/thunks/SystemDashboardthunk";
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
 const dispatch=useDispatch()
-const {tokens}=useSelector((state)=>state.userTokens)
+const {tokens,userCategory}=useSelector((state)=>state.userTokens)
 const [forstData, setForstData] = useState({
   telegram_id: '',
   first_name: ''
 });
 
 
-
+const closeCategoryModal = () =>{
+  setShowCategoryModal(false)
+}
 function HandleSubmit(e){
   e.preventDefault()
   dispatch(AuthLoginThunk(forstData)).unwrap()
@@ -34,7 +37,9 @@ const HandleLoginChange = (e) => {
   }));
 };
 
-
+useEffect(()=>{
+dispatch(GetCategoryThunk())
+},[dispatch])
 
   return (
     <>
@@ -152,23 +157,8 @@ const HandleLoginChange = (e) => {
       {showCategoryModal && (
         <div className="modal-overlay col-md-6">
           <div className="col-xl-4 col-lg-6 col-md-8 col-11">
-            <div className="modal-content">
-              <div
-                onClick={() => setShowCategoryModal(false)}
-                style={{ cursor: "pointer" }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-x float-end"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                </svg>
-              </div>
-              <SelectCategory />
+            <div className="modal-content">              
+              <SelectCategory closeCategoryModal={closeCategoryModal} />
             </div>
           </div>
         </div>

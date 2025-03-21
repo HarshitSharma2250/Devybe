@@ -1,5 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { axiosInstance } from "../../Axios/AxiosInstance";
+import toast from "react-hot-toast";
+
 
 
 
@@ -7,13 +10,12 @@ import axios from "axios";
 export const AuthLoginThunk = createAsyncThunk(
   "/authlogin",
   async (data) => {
-    console.log("check data in thunk",data);
     try {
       const res = await axios.post(
         `http://localhost:4100/user/register`,data
       );
-      // toast("Wallet imported successfully.", "success");
-console.log("check data in thunk",res.data);
+      toast.success("Register successfully");
+
       return res.data;
     } catch (error) {
       if (error.response.status === 401) {
@@ -36,3 +38,27 @@ console.log("check data in thunk",res.data);
     }
   }
 );
+
+
+export const UserAddCategoryThunk = createAsyncThunk(
+  "/addcategory",
+  async (data) => {
+    try {
+      const res = await axiosInstance.patch(
+        `/user/categories`,{names:data}
+      );
+       toast.success("category selected successfully");
+      return res.data;
+    } catch (error) {
+      if (error.response.status === 401) {
+        toast("authorisation error", "error");
+      } else if (error.response.status === 500) {
+        toast("Enternal Server Error", "error");
+      } else if (error.response.status === 400) {
+          toast.error(error?.response?.data?.msg);
+        
+      }
+    }
+  }
+);
+
