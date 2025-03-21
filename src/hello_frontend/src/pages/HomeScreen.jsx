@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import EventSection from "./EventSection";
+import { useDispatch } from "react-redux";
+import { GetUserInfoThunk } from "../features/thunks/SystemDashboardthunk";
+import AllEvents from "./AllEvents";
 
 const HomeScreen = () => {
+const dispatch=useDispatch()
+
+
+
+useEffect(()=>{
+dispatch(GetUserInfoThunk())
+},[dispatch])
+
+
+
+
   return (
     <div>
       <Header />
@@ -12,22 +26,11 @@ const HomeScreen = () => {
       </div>
       <div className="pt-5">
         <div className="heading container-lg">
-          <h2>Featured Events</h2>
-          <EventSection />
+          <h2>All Events</h2>
+          <AllEvents />
         </div>
       </div>
-      <div className="pt-5">
-        <div className="heading container-lg">
-          <h2>Popular Events</h2>
-          <EventSection />
-        </div>
-      </div>
-      <div className="pt-5">
-        <div className="heading container-lg">
-          <h2>Trending Events</h2>
-          <EventSection />
-        </div>
-      </div>
+     
       <Footer />
     </div>
   );
