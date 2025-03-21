@@ -1,7 +1,7 @@
 import HomeScreen from "./pages/HomeScreen";
 import './index.css'
 import { Route, Routes } from "react-router-dom";
-import EventDetail from "./pages/EventDetails";
+import EventDetail from "./pages/EventDetail";
 
 function App() {
   return (

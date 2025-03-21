@@ -5,7 +5,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { GetAllEventThunk } from "../features/thunks/SystemDashboardthunk";
+import { GetAllEventThunk, RegisterEventThunk } from "../features/thunks/SystemDashboardthunk";
+import { useNavigate } from "react-router-dom";
+import EventDetail from "./EventDetail";
 
 const mockEvents = [
   {
@@ -91,16 +93,29 @@ const mockEvents = [
 const AllEvents = () => {
 const dispatch=useDispatch()
 const {Events}=useSelector(state=>state.dashboardData)
-
+const [show, setShow] = useState(false);
+const [eventData, setEventData] = useState(null);
+// const navigate=useNavigate()
 
 useEffect(()=>{
 dispatch(GetAllEventThunk())
 },[dispatch])
 
 
-console.log("check all event data------",Events);
+
+
+
+const HandleClickSingleEvent = (data) => {
+  setEventData(data);
+  setShow(true);  
+};
+
+const handleClose = () => setShow(false);
+
+
 
   return (
+    <>
     <div className="mt-5 container-lg position-relative">
       {/* Slider */}
       <Swiper
@@ -120,13 +135,13 @@ console.log("check all event data------",Events);
         className="news-slider"
       >
         {Events.map((event) => (
-          <SwiperSlide key={event._id} className="news-slider__item">
-            <div className="bg-card p-4 event-card">
+          <SwiperSlide key={event._id} className="news-slider__item" >
+            <div className="bg-card p-4 event-card" onClick={()=>HandleClickSingleEvent(event)}>
               <h4>{event?.Title}</h4>
               <p className="mode">{event.Mode}</p>
               <img
-                src={event?.image}
-                alt={event.title}
+                src={event?.Images[0]}
+                alt={event.Title}
                 className="w-100 my-3"
                 style={{ height: "250px", objectFit: "cover", borderRadius:"15px"}}
               />
@@ -135,7 +150,7 @@ console.log("check all event data------",Events);
                 <p className="location">Location: {event.Location.address}</p>
               ) : (
                 <a
-                  href={event.link}
+                  href={event?.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="event-link"
@@ -161,6 +176,10 @@ console.log("check all event data------",Events);
       <div className="swiper-prev text-white">&lt;</div>
       <div className="swiper-next text-white">&gt;</div>
     </div>
+    {
+        show && <EventDetail setShow={setShow} eventData={eventData}/>
+    }
+    </>
   );
 };
 

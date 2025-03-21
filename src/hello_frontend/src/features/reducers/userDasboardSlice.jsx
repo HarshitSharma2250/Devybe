@@ -11,7 +11,7 @@ Events:[]
   };
 
 
-//GetUserInfoThunk
+//RegisterEventThunk
 
   const DashboardSlice = createSlice({
     name: "getcategory",
@@ -67,6 +67,7 @@ builder
     state.loader[GetAllEventThunk.pending] = false;
   state.error = action.payload 
 });
+
 
     },
   });
