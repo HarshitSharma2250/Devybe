@@ -218,3 +218,99 @@ legend {
 }
 
 /* event slider css */
+
+
+/* event details page css */
+.event-detail {
+    border-radius: 6px;
+    border: 1px solid#E5E7EB;
+    padding: 22px;
+}
+
+.event-detail h1 {
+    color: #000;
+    
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.event-detail-content img {
+    width: 24px;
+    height: 24px;
+}
+
+.event-detail small {
+    color: #4B5563;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.event-detail h4,
+.event-card h4 {
+    color: #000;
+    
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.event-detail h4 span,
+.event-card h4 span {
+    color: #708090;
+    font-size: 11px;
+}
+
+.other-details h6 {
+    color: rgba(114, 54, 0, 0.80);
+    
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.other-details h5 {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.other-details h3 {
+    color: #4B5563;
+    
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.other-details p {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 0;
+}
+
+.social-icon {
+    border-radius: 8px;
+    background: #F1F0FA;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icon svg {
+    fill: #000
+}
+
+.social-icon:hover svg {
+    fill: #4b4b4b;
+}
