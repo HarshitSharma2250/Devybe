@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GetAllEventThunk, RegisterEventThunk } from "../features/thunks/SystemDashboardthunk";
 import { useNavigate } from "react-router-dom";
 import EventDetail from "./EventDetail";
@@ -93,29 +93,24 @@ const mockEvents = [
 const AllEvents = () => {
 const dispatch=useDispatch()
 const {Events}=useSelector(state=>state.dashboardData)
-const [show, setShow] = useState(false);
-const [eventData, setEventData] = useState(null);
-// const navigate=useNavigate()
+ const navigate=useNavigate()
 
 useEffect(()=>{
 dispatch(GetAllEventThunk())
 },[dispatch])
 
-
+console.log('Events hjeree',Events)
 
 
 
 const HandleClickSingleEvent = (data) => {
-  setEventData(data);
-  setShow(true);  
+  navigate('/event-details', { state: data });
 };
 
-const handleClose = () => setShow(false);
 
 
 
   return (
-    <>
     <div className="mt-5 container-lg position-relative">
       {/* Slider */}
       <Swiper
@@ -134,37 +129,37 @@ const handleClose = () => setShow(false);
         }}
         className="news-slider"
       >
-        {Events.map((event) => (
-          <SwiperSlide key={event._id} className="news-slider__item" >
+        {Events.map((event,index) => (
+          <SwiperSlide key={index} className="news-slider__item" >
             <div className="bg-card p-4 event-card" onClick={()=>HandleClickSingleEvent(event)}>
-              <h4>{event?.Title}</h4>
-              <p className="mode">{event.Mode}</p>
+              <h4>{event?.title}</h4>
+              <p className="mode">{event.mode}</p>
               <img
-                src={event?.Images[0]}
-                alt={event.Title}
+                src={event?.imageUrl}
+                alt={event.title}
                 className="w-100 my-3"
                 style={{ height: "250px", objectFit: "cover", borderRadius:"15px"}}
               />
               <p className="sub-title">{event.subTitle}</p>
-              {event.Mode === "offline" ? (
-                <p className="location">Location: {event.Location.address}</p>
+              {event.mode === "offline" ||event.mode === "online" ? (
+                <p className="location">Location: {event.address}</p>
               ) : (
                 <a
-                  href={event?.link}
+                  href={"#"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="event-link"
                 >
-                  Join Online
+                  Join Now
                 </a>
               )}
               <div className="d-flex flex-wrap justify-content-between mt-3">
                 <p className="date">
-                  Date: {new Date(event.eventDate).toLocaleDateString()}
+                  Date: {(event.eventDate)}
                 </p>
                 <p className="type">{event.eventType}</p>
                 <p className="time col-12">
-                  Time: {event.eventStartTime} - {event.eventEndTime}
+                  Time: {event.startTime} - {event.endTime}
                 </p>
               </div>
             </div>
@@ -176,10 +171,7 @@ const handleClose = () => setShow(false);
       <div className="swiper-prev text-white">&lt;</div>
       <div className="swiper-next text-white">&gt;</div>
     </div>
-    {
-        show && <EventDetail setShow={setShow} eventData={eventData}/>
-    }
-    </>
+ 
   );
 };
 

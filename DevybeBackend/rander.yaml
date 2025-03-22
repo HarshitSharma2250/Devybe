@@ -1,0 +1,16 @@
+services:
+  - name: main
+    type: web
+    runtime: node
+    repo: https://github.com/BlockonVentures/masterverses-icp-frontend
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: PORT
+        value: 3001
+        
+    plan: free
+    autoDeploy: true

@@ -3,13 +3,18 @@
   "canisters": {
     "hello_frontend": {
       "source": ["src/hello_frontend/dist"],
-      "type": "assets"
+      "type": "assets",
+      "build": ["npm run build"]
+    },
+    "backend":{
+      "main": "./DevybeBackend/src/events_backend/main.mo",
+      "type": "motoko"
     }
   },
   "defaults": {
     "build": {
       "args": "",
-      "packtool": "npm run build"
+      "packtool": ""
     }
   },
   "output_env_file": ".env",

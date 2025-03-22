@@ -3,13 +3,12 @@ import arrLeft from "../assets/images/icons/arrow-left.png";
 import tickfrom from "../assets/images/icons/tick.png";
 import tickMark from "../assets/images/icons/tick-mark.png";
 import { useDispatch, useSelector } from "react-redux";
-import { UserAddCategoryThunk } from "../features/thunks/UserThunk";
+import toast from "react-hot-toast";
 
 // const List = ({ items, closeCategoryModal}) => {
 const SelectCategory = ({closeCategoryModal}) => {
 
   const [current, setCurrent] = useState([]);
-  const dispatch = useDispatch()
 
   const updateCurrent = useCallback((name) => {
     setCurrent((c) =>
@@ -19,16 +18,25 @@ const SelectCategory = ({closeCategoryModal}) => {
 
 
   function HandleAddCategory() {
-    dispatch(UserAddCategoryThunk(current)).unwrap()
-.then((response)=>{
-  if(success){
-    closeCategoryModal(false)
-  }
-})
+ toast.success("category updated successfully")
+ setTimeout(() => {
+   closeCategoryModal(false)
+ }, 500);
+
    }
       
    
-const{allCategories}=useSelector((state)=>state.dashboardData)
+   const allCategories = [
+    { name: "Business" },
+    { name: "Music & Entertainment" },
+    { name: "Community" },
+    { name: "Health" },
+    { name: "Web3" },
+    { name: "Blockchain" },
+    { name: "Crypto" }
+  ];
+  
+
 
 
   return (

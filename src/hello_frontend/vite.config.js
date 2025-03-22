@@ -31,22 +31,27 @@ export default defineConfig({
     
     // },
   },
-
+  // headers: {
+  //   'Content-Security-Policy': "default-src 'self' https://devybe-backend.onrender.com",
+  //   'Access-Control-Allow-Origin': '*', // Change '*' to your domain for production
+  //   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+  //   'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+  // },
   plugins: [
     react(),
-    environment("all", { prefix: "CANISTER_" }),
-    environment("all", { prefix: "DFX_" }),
+    // environment("all", { prefix: "CANISTER_" }),
+    // environment("all", { prefix: "DFX_" }),
   ],
 
-  resolve: {
-    alias: [
-      {
-        find: "declarations",
-        replacement: fileURLToPath(
-          new URL("../declarations", import.meta.url)
-        ),
-      },
-    ],
-    dedupe: ['@dfinity/agent'],
-  },
+  // resolve: {
+  //   alias: [
+  //     {
+  //       find: "declarations",
+  //       replacement: fileURLToPath(
+  //         new URL("../declarations", import.meta.url)
+  //       ),
+  //     },
+  //   ],
+  //   dedupe: ['@dfinity/agent'],
+  // },
 });

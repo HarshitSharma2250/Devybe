@@ -3,27 +3,30 @@ import logo from "../../src/assets/images/logo.png";
 import SelectCategory from "../pages/selectCategory";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthLoginThunk } from "../features/thunks/UserThunk";
-import { GetCategoryThunk } from "../features/thunks/SystemDashboardthunk";
+
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
 const dispatch=useDispatch()
-const {tokens,userCategory}=useSelector((state)=>state.userTokens)
+const {tokens}=useSelector((state)=>state.userTokens)
 const [forstData, setForstData] = useState({
-  telegram_id: '',
-  first_name: ''
+  password: '',
+  name: ''
 });
+
+
 
 
 const closeCategoryModal = () =>{
   setShowCategoryModal(false)
 }
+
 function HandleSubmit(e){
   e.preventDefault()
   dispatch(AuthLoginThunk(forstData)).unwrap()
   .then((response)=>{
-    if(response.x_auth_access_token){
+    if(response.message){
       setShowModal(false)
     }
   })
@@ -37,9 +40,6 @@ const HandleLoginChange = (e) => {
   }));
 };
 
-useEffect(()=>{
-dispatch(GetCategoryThunk())
-},[dispatch])
 
   return (
     <>
@@ -91,7 +91,7 @@ dispatch(GetCategoryThunk())
                   type="button"
                   onClick={() => setShowModal(true)}
                 >
-                 {tokens && tokens.first_name ||"Sign up"} 
+                 {tokens && tokens.message ||"Sign up"} 
                 </button>
               </form>
               
@@ -125,8 +125,8 @@ dispatch(GetCategoryThunk())
                 <div className="form-group">
                   <label className="form-label">User Name</label>
                   <input
-                  value={forstData.first_name}
-                  name="first_name"
+                  value={forstData.name}
+                  name="name"
                   onChange={HandleLoginChange}
                     type="text"
                     className="form-control"
@@ -137,8 +137,8 @@ dispatch(GetCategoryThunk())
                   <label className="form-label">Password</label>
                   <input
                     type="password"
-                    value={forstData.telegram_id}
-                    name="telegram_id"
+                    value={forstData.password}
+                    name="password"
                     onChange={HandleLoginChange}
                     className="form-control"
                     placeholder="Enter Password"

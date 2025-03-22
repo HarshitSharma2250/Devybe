@@ -3,7 +3,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import EventSection from "./EventSection";
 import { useDispatch } from "react-redux";
-import { GetUserInfoThunk } from "../features/thunks/SystemDashboardthunk";
 import AllEvents from "./AllEvents";
 
 const HomeScreen = () => {
@@ -11,9 +10,6 @@ const dispatch=useDispatch()
 
 
 
-useEffect(()=>{
-dispatch(GetUserInfoThunk())
-},[dispatch])
 
 
 

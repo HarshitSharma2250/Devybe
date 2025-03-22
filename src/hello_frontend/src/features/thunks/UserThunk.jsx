@@ -11,8 +11,8 @@ export const AuthLoginThunk = createAsyncThunk(
   "/authlogin",
   async (data) => {
     try {
-      const res = await axios.post(
-        `http://localhost:4100/user/register`,data
+      const res = await axiosInstance.post(
+        `api/register`,data
       );
       toast.success("Register successfully");
 
@@ -39,26 +39,4 @@ export const AuthLoginThunk = createAsyncThunk(
   }
 );
 
-
-export const UserAddCategoryThunk = createAsyncThunk(
-  "/addcategory",
-  async (data) => {
-    try {
-      const res = await axiosInstance.patch(
-        `/user/categories`,{names:data}
-      );
-       toast.success("category selected successfully");
-      return res.data;
-    } catch (error) {
-      if (error.response.status === 401) {
-        toast("authorisation error", "error");
-      } else if (error.response.status === 500) {
-        toast("Enternal Server Error", "error");
-      } else if (error.response.status === 400) {
-          toast.error(error?.response?.data?.msg);
-        
-      }
-    }
-  }
-);
 
